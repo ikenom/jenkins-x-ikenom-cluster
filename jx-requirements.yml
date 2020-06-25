@@ -1,0 +1,47 @@
+autoUpdate:
+  enabled: false
+  schedule: ""
+terraform: true
+cluster:
+  clusterName: "test3"
+  environmentGitOwner: ""
+  provider: eks
+  region: "us-east-1"
+gitops: true
+environments:
+  - key: dev
+  - key: staging
+  - key: production
+ingress:
+  domain: ""
+  ignoreLoadBalancer: true
+  externalDNS: false
+  tls:
+    email: ""
+    enabled: false
+    production: false
+kaniko: true
+secretStorage: vault
+vault:
+  aws:
+    iamUserName: ""
+    dynamoDBTable: "vault-unseal-test3-cuw0pmBz"
+    dynamoDBRegion: "us-east-1"
+    kmsKeyId: "7c5901d9-af88-4235-9773-f5cfa3f0bc84"
+    kmsRegion: "us-east-1"
+    s3Bucket: "vault-unseal-test3-20200625190038617300000004"
+    s3Region: "us-east-1"
+storage:
+  logs:
+    enabled: true
+    url: s3://logs-test3-20200625190038621900000006
+  reports:
+    enabled: true
+    url: s3://reports-test3-20200625190038622000000007
+  repository:
+    enabled: true
+    url: s3://repository-test3-20200625190039020200000008
+versionStream:
+  ref: master
+  url: https://github.com/jenkins-x/jenkins-x-versions.git
+webhook: lighthouse

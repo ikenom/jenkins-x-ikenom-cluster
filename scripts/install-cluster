@@ -1,0 +1,16 @@
+# !/bin/bash
+
+export AWS_ACCESS_KEY_ID=AKIAJLWHJB72EA7G65KQ
+export AWS_SECRET_ACCESS_KEY=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
+
+terraform=$(dirname "$0")/terraform
+
+$terraform init
+$terraform apply \
+  -auto-approve \
+  -var="cluster_namespace=ikenom" \
+  -var="cluster_name=test3"
+$terraform init -force-copy
+
+export VAULT_AWS_ACCESS_KEY_ID=$($terraform output vault_user_id)
+export VAULT_AWS_SECRET_ACCESS_KEY=$($terraform output vault_user_secret)
